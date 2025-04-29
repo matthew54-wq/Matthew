@@ -131,3 +131,132 @@ drawWheel();
     </tbody>
   </table>
 </div>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MatthewRoblox.com - Shop Roblox</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #111; color: #fff; }
+    header { background: #4CAF50; padding: 30px; text-align: center; }
+    nav { background: #222; padding: 10px; text-align: center; }
+    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+    .section { padding: 20px; }
+    .product, .acc-item { background: #222; padding: 15px; margin: 10px auto; border-radius: 10px; max-width: 600px; text-align: center; }
+    .product img, .acc-item img { max-width: 100%; border-radius: 10px; }
+    .buy, .support-btn { display: inline-block; margin-top: 10px; padding: 10px 20px; background: #4CAF50; color: #fff; border-radius: 5px; text-decoration: none; }
+    .input-box { padding: 10px; margin: 5px 0; width: 80%; max-width: 400px; }
+    .acc-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .support-box { background: #222; padding: 20px; border-radius: 10px; max-width: 600px; margin: auto; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { padding: 10px; text-align: center; }
+    th { background: #4CAF50; }
+    tr:nth-child(even) { background: #333; }
+    @media (min-width: 768px) {
+      header h1 { font-size: 48px; }
+      nav a { margin: 0 25px; font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>MatthewRoblox.com</h1>
+  <p>Shop Acc, Robux & Vòng Quay Tự Động</p>
+</header>
+
+<nav>
+  <a href="#top">Trang chủ</a>
+  <a href="#recharge">Nạp tiền</a>
+  <a href="#accshop">Mua acc</a>
+  <a href="#spin">Vòng quay</a>
+  <a href="#leaderboard">BXH</a>
+  <a href="#support">CSKH</a>
+</nav>
+
+<div class="section" id="recharge">
+  <h2>💰 Nạp tiền vào tài khoản</h2>
+  <p>Chọn phương thức và quét mã để nạp:</p>
+  <input class="input-box" type="text" placeholder="Nhập tên Roblox hoặc ID">
+  <br>
+  <img src="https://via.placeholder.com/250x250.png?text=Momo+QR" alt="QR Momo">
+  <p>Nội dung chuyển khoản: <strong>NAP [Tên bạn]</strong></p>
+</div>
+
+<div class="section" id="accshop">
+  <h2>🛒 Mua Acc Tự Động</h2>
+  <div class="acc-list">
+    <div class="acc-item">
+      <img src="https://via.placeholder.com/400x200.png?text=Acc+VIP">
+      <h3>Acc VIP - Lv 999</h3>
+      <p>Giá: 150K</p>
+      <button class="buy">Mua ngay</button>
+    </div>
+    <div class="acc-item">
+      <img src="https://via.placeholder.com/400x200.png?text=Acc+SSS">
+      <h3>Acc SSS - Full Gamepass</h3>
+      <p>Giá: 300K</p>
+      <button class="buy">Mua ngay</button>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="spin">
+  <h2>🎰 Vòng Quay May Mắn – 10K/Lượt</h2>
+  <canvas id="wheel" width="300" height="300" style="display: block; margin: auto;"></canvas>
+  <button class="buy" onclick="spinWheel()">Quay ngay</button>
+</div>
+
+<div class="section" id="leaderboard">
+  <h2>🏆 Bảng Xếp Hạng Ủng Hộ</h2>
+  <table>
+    <tr><th>Hạng</th><th>Tên</th><th>Số tiền</th></tr>
+    <tr><td>1</td><td>Nguyễn Văn A</td><td>500K</td></tr>
+    <tr><td>2</td><td>Lê B</td><td>300K</td></tr>
+    <tr><td>3</td><td>Trần C</td><td>200K</td></tr>
+  </table>
+</div>
+
+<div class="section" id="support">
+  <h2>📞 Hỗ Trợ & CSKH</h2>
+  <div class="support-box">
+    <p>Zalo: <a href="https://zalo.me" class="support-btn">Liên hệ Zalo</a></p>
+    <p>Facebook: <a href="https://facebook.com" class="support-btn">Inbox Facebook</a></p>
+    <p>Email: support@matthewroblox.com</p>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('wheel');
+const ctx = canvas.getContext('2d');
+const rewards = ["Acc SSS", "200 Robux", "Gamepass", "Acc VIP", "500 Robux", "Quay lại", "Không trúng", "100 Robux"];
+const arc = Math.PI * 2 / rewards.length;
+function drawWheel() {
+  for (let i = 0; i < rewards.length; i++) {
+    const angle = i * arc;
+    ctx.beginPath();
+    ctx.fillStyle = i % 2 ? '#66BB6A' : '#4CAF50';
+    ctx.moveTo(150, 150);
+    ctx.arc(150, 150, 150, angle, angle + arc);
+    ctx.lineTo(150, 150);
+    ctx.fill();
+    ctx.save();
+    ctx.translate(150, 150);
+    ctx.rotate(angle + arc / 2);
+    ctx.fillStyle = '#000';
+    ctx.fillText(rewards[i], 60, 5);
+    ctx.restore();
+  }
+}
+drawWheel();
+function spinWheel() {
+  const deg = Math.floor(Math.random() * 360 + 720);
+  canvas.style.transition = 'transform 4s ease-out';
+  canvas.style.transform = `rotate(${deg}deg)`;
+  setTimeout(() => alert("🎉 Cảm ơn! Liên hệ Zalo để nhận phần thưởng!"), 4200);
+}
+</script>
+
+</body>
+</html>
