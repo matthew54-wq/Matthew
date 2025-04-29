@@ -102,3 +102,32 @@ drawWheel();
 
 </body>
 </html>
+<div class="section" id="leaderboard">
+  <h2>🏆 Bảng Xếp Hạng Ủng Hộ</h2>
+  <table style="width: 100%; max-width: 600px; margin: auto; background: #222; border-collapse: collapse;">
+    <thead>
+      <tr style="background: #4CAF50;">
+        <th style="padding: 10px;">Hạng</th>
+        <th style="padding: 10px;">Tên</th>
+        <th style="padding: 10px;">Số tiền ủng hộ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align: center;">🥇 1</td>
+        <td style="text-align: center;">Nguyễn Văn A</td>
+        <td style="text-align: center;">500K</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">🥈 2</td>
+        <td style="text-align: center;">Lê B</td>
+        <td style="text-align: center;">300K</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">🥉 3</td>
+        <td style="text-align: center;">Trần C</td>
+        <td style="text-align: center;">200K</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
